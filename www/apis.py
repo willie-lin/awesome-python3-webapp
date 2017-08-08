@@ -17,7 +17,7 @@ class APIError(Exception):
         self.message = message
 
 
-class APIValueRrror(APIError):
+class APIValueError(APIError):
 
     def __init__(self,field,message=''):
 
@@ -25,9 +25,8 @@ class APIValueRrror(APIError):
 
 
 class APIResourceNotFoundError(APIError):
-
-        def __init__(self,field,message=''):
-            super(APIResourceNotFoundError,self).__init__('value:notfound',field,message)
+    def __init__(self,field,message=''):
+        super(APIResourceNotFoundError,self).__init__('value:notfound',field,message)
 
 
 class APIPermissionError(APIError):
