@@ -12,7 +12,9 @@
 
 from datetime import datetime
 
-import logging;logging.basicConfig(level=logging.INFO)
+import logging;
+
+logging.basicConfig(level=logging.INFO)
 import asyncio
 from aiohttp import web
 
