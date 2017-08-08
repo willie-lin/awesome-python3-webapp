@@ -17,11 +17,11 @@ class APIError(Exception):
         self.message = message
 
 
-class APIValueRrror(APIError):
+class APIValueError(APIError):
 
     def __init__(self,field,message=''):
 
-        super(APIValueRrror,self).__init__('value:invalid',field,message)
+        super(APIValueError,self).__init__('value:invalid',field,message)
 
 
 class APIResourceNotFoundError(APIError):
