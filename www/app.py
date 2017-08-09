@@ -12,7 +12,11 @@
 '''
 async web application.
 '''
-import logging; logging.basicConfig(level=logging.INFO)
+import logging;
+
+from www import orm
+
+logging.basicConfig(level=logging.INFO)
 
 import asyncio, os, json, time
 from datetime import datetime
@@ -20,9 +24,10 @@ from datetime import datetime
 from aiohttp import web
 from jinja2 import Environment, FileSystemLoader
 
-from config import configs
-import orm
-from coroweb import add_routes, add_static
+from www.config import configs
+
+from www.coroweb import add_routes, add_static
+
 
 def init_jinja2(app, **kw):
     logging.info('init jinja2...')
@@ -44,6 +49,7 @@ def init_jinja2(app, **kw):
         for name, f in filters.items():
             env.filters[name] = f
     app['__templating__'] = env
+
 @asyncio.coroutine
 def logger_factory(app, handler):
     @asyncio.coroutine
@@ -52,3 +58,4 @@ def logger_factory(app, handler):
         # yield from asyncio.sleep(0.3)
         return (yield from handler(request))
     return logger
+
