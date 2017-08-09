@@ -25,9 +25,6 @@ class APIError(Exception):
 
 
 class APIValueError(APIError):
-    '''
-        Indicate the input value has error or invalid. The data specifies the error field of input form.
-        '''
 
     def __init__(self,field,message=''):
 
