@@ -12,6 +12,8 @@ Configuration
 from www import config_default
 
 __author__ = 'Willie Lin'
+
+
 class Dict(dict):
     '''
     Simple dict support access as x.y style.
@@ -21,7 +23,6 @@ class Dict(dict):
         for k,v in zip(names,values):
             self[k] = v
 
-
     def __getattr__(self, key):
         try:
             return self[key]
@@ -30,6 +31,7 @@ class Dict(dict):
 
     def __setattr__(self, key, value):
         self[key] = value
+
 
 def merge(defaults,override):
     r = { }
@@ -57,6 +59,7 @@ try:
     configs = merge(configs,config_override.configs)
 except ImportError:
     pass
+
 configs = toDict(configs)
 
 
